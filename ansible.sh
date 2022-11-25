@@ -37,6 +37,16 @@ ansible demo -m setup
 TO CHECK THE STAUS OF HTTPD
 sudo server httpd status
 
+Topic
+1. Target Section
+2. Task
+3. Variable
+4. Handler
+5. Dry run----(--check)
+6. Loop
+7. Conditions
+
+
 
 ######################################################
                  HANDLER
@@ -103,7 +113,27 @@ sudo server httpd status
                        - Govind
                        - Rishik
 
-####################################################################
+##########################################################################
+
+
+############################################################################
+                   CONDITIONS
+############################################################################
+
+---
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+          - name: install apache on debian
+            command: apt-get install apache2
+            when: ansible_os_family == "Debian"
+          - name: install apache server for redhat family
+            command: yum -y install httpd
+            when: ansible_os_family == "RedHat"
+
+###########################################################################
 
 
 ansible demo -m setup -a "filter=*ipv4*"
