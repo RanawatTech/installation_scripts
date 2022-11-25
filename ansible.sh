@@ -76,7 +76,34 @@ sudo server httpd status
               action: yum name='{{pkgname}}' state=installed
               
         
-###############################################################        
-~
+###############################################################    
+
+
+
+
+
+
+######################################################
+                 LOOP
+######################################################
+
+
+
+---
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+          - name: add a list of user
+            user: name='{{item}}' state=present
+            with_items:
+                       - Arvind
+                       - Raj
+                       - Govind
+                       - Rishik
+
+####################################################################
+
 
 ansible demo -m setup -a "filter=*ipv4*"
