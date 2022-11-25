@@ -28,6 +28,11 @@ Module
  
  Copy file from server to node
   ansible demo[0] -b -m copy -a "src=copiedfromserver dest=/temp"
+  
+  
+  //
+  mkdir -p playbook/roles/webserver/task
+  -p= parent
 
 
 
