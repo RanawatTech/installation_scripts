@@ -34,12 +34,36 @@ Module
 //
 ansible demo -m setup
 
+TO CHECK THE STAUS OF HTTPD
+sudo server httpd status
+
+
+######################################################
+                 HANDLER
+######################################################
+
+---
+- hosts: demo
+  name: ansible
+  become: yes
+  connection: ssh
+  tasks:
+          - name: Install httpd
+            action: yum name=httpd state=installed
+            notify: restart httpd
+  handlers:
+          - name: restart httpd
+            action: service name=httpd state=restarted
+
+########################################################
+
 
 
 ///
 
-
-#############################################################
+######################################################
+                 VARIABLE
+######################################################
 ---
 - hosts: demo
   user: ansible
