@@ -137,3 +137,27 @@ Topic
 
 
 ansible demo -m setup -a "filter=*ipv4*"
+
+
+
+
+
+Vault
+
+
+TO CREATE ENCRYPTED FILE
+ansible-vault create Filename.yml
+
+TO EDIT THE ENCRYPTED PLAYBOOK
+ansible-vault edit filename.yml
+
+TO EDIT THE PASSWORD OF FILE
+ansible-vault rekey filename.yml
+
+
+To encrypted existing playbook
+ansible-vault encrypt filename.yml
+
+
+To decrypted encrypted playbook
+ansible-vault decrypt filename.yml
